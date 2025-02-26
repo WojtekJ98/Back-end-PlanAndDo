@@ -5,6 +5,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes";
 import dashboardRoutes from "./routes/dashboardRoutes";
 import boardRoutes from "./routes/boardRoutes";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 dotenv.config();
 
@@ -23,4 +24,6 @@ mongoose
 
 const PORT = process.env.PORT;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+export default (req: VercelRequest, res: VercelResponse) => app(req, res);
