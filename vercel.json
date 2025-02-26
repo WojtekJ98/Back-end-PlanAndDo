@@ -1,8 +1,8 @@
 {
   "functions": {
-    "api/index.ts": {
+    "api/server.ts": {
       "runtime": "nodejs18.x"
     }
   },
-  "routes": [{ "src": "/api/(.*)", "dest": "/api/index.ts" }]
+  "routes": [{ "src": "/api/(.*)", "dest": "/api/server.ts" }]
 }
