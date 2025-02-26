@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -10,6 +10,25 @@ dotenv.config();
 
 const app: Application = express();
 app.use(express.json());
+
+app.use((req: Request, res: Response, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://plan-and-do-kappa.vercel.app"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  next();
+});
 
 app.use(
   cors({
@@ -28,11 +47,5 @@ mongoose
   .connect(process.env.MONGO_URI || "")
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error: ", err));
-
-// const PORT = process.env.PORT;
-
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-// export default (req: VercelRequest, res: VercelResponse) => app(req, res);
 
 export default app;
