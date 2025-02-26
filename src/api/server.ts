@@ -2,9 +2,9 @@ import express, { Application } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import authRoutes from "./routes/authRoutes";
-import dashboardRoutes from "./routes/dashboardRoutes";
-import boardRoutes from "./routes/boardRoutes";
+import authRoutes from "../routes/authRoutes";
+import dashboardRoutes from "../routes/dashboardRoutes";
+import boardRoutes from "../routes/boardRoutes";
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
 dotenv.config();
@@ -22,8 +22,10 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error: ", err));
 
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
 
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-export default (req: VercelRequest, res: VercelResponse) => app(req, res);
+// export default (req: VercelRequest, res: VercelResponse) => app(req, res);
+
+export default app;

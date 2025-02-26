@@ -13,11 +13,11 @@
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/mongoose": "^5.11.96",
-    "@vercel/node": "^5.1.9",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "dev": "ts-node-dev src/server.ts"
+    "dev": "ts-node-dev src/api/server.ts",
+    "build": "tsc"
   }
 }

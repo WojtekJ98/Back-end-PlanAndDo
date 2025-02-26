@@ -4,5 +4,10 @@
       "runtime": "nodejs18.x"
     }
   },
-  "routes": [{ "src": "/api/(.*)", "dest": "/api/server.ts" }]
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/server.ts"
+    }
+  ]
 }
