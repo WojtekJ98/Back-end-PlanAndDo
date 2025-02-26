@@ -14,7 +14,7 @@ app.use(express.json());
 app.use((req: Request, res: Response, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://plan-and-do-kappa.vercel.app"
+    "https://plan-and-do-wojtelos-projects.vercel.app/"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -32,7 +32,7 @@ app.use((req: Request, res: Response, next) => {
 
 app.use(
   cors({
-    origin: "https://plan-and-do-kappa.vercel.app",
+    origin: "https://plan-and-do-wojtelos-projects.vercel.app/",
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,
