@@ -19,6 +19,17 @@ app.use(
     credentials: true,
   })
 );
+app.options("*", (req, res) => {
+  console.log("Preflight request received");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://plan-and-do-wojtelos-projects.vercel.app"
+  );
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.send();
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
