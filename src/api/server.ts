@@ -5,13 +5,20 @@ import cors from "cors";
 import authRoutes from "../routes/authRoutes";
 import dashboardRoutes from "../routes/dashboardRoutes";
 import boardRoutes from "../routes/boardRoutes";
-import { VercelRequest, VercelResponse } from "@vercel/node";
 
 dotenv.config();
 
 const app: Application = express();
 app.use(express.json());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "https://plan-and-do-kappa.vercel.app",
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    allowedHeaders: "Content-Type,Authorization",
+    credentials: true,
+  })
+);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
