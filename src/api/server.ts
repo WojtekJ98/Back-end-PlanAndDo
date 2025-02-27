@@ -52,8 +52,10 @@ app.use((req: Request, res: Response) => {
 });
 
 // ✅ Database Connection
+
+const mongoURI = process.env.MONGO_URI as string;
 mongoose
-  .connect(process.env.MONGO_URI || "")
+  .connect(mongoURI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error: ", err));
 
