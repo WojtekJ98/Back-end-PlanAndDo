@@ -18,6 +18,7 @@
   },
   "scripts": {
     "dev": "ts-node-dev src/api/server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/api/server.js"
   }
 }
