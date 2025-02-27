@@ -54,6 +54,12 @@ app.use((req: Request, res: Response) => {
 // ✅ Database Connection
 
 const mongoURI = process.env.MONGO_URI as string;
+
+if (!mongoURI) {
+  console.error("❌ MONGO_URI is not set!");
+  process.exit(1);
+}
+
 mongoose
   .connect(mongoURI)
   .then(() => console.log("✅ MongoDB connected"))
