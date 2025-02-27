@@ -21,18 +21,7 @@ app.use(
     credentials: true,
   })
 );
-
-// ✅ Explicitly Handle Preflight Requests
-app.options("*", (req: Request, res: Response) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://plan-and-do-wojtelos-projects.vercel.app"
-  );
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  return res.sendStatus(200);
-});
+app.options("*", cors());
 
 // ✅ API Routes
 app.use("/api/auth", authRoutes);
@@ -50,4 +39,8 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error: ", err));
 
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 export default app;
