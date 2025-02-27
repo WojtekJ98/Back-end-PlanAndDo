@@ -14,8 +14,8 @@ app.use(express.json());
 // ✅ CORS Configuration
 const allowedOrigins = [
   "https://plan-and-do-wojtelos-projects.vercel.app",
-  "https://plan-and-do-kappa.vercel.app/",
-  "https://plan-and-do-git-main-wojtelos-projects.vercel.app/",
+  "https://plan-and-do-kappa.vercel.app",
+  "https://plan-and-do-git-main-wojtelos-projects.vercel.app",
 ];
 app.use(
   cors({
@@ -26,15 +26,18 @@ app.use(
   })
 );
 app.options("*", (req: Request, res: Response) => {
-  console.log("Preflight request received");
-  res.sendStatus(204); // 204 No Content
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(204);
 });
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://plan-and-do-wojtelos-projects.vercel.app"
-  );
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
