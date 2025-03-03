@@ -40,7 +40,6 @@ const taskSchema: Schema = new Schema({
   subTasks: {
     type: [subtaskSchema],
     default: [],
-    id: string,
   },
 });
 
