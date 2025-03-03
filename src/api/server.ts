@@ -20,7 +20,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
@@ -29,7 +29,7 @@ app.options("*", (req: Request, res: Response) => {
   res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
   res.header(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT,PATCH, DELETE, OPTIONS"
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
   );
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -43,7 +43,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
   res.header(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT,PATCH,DELETE, OPTIONS"
+    "GET, POST, PUT,PATCH ,DELETE, OPTIONS"
   );
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true");
