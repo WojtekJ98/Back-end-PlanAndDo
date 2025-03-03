@@ -356,9 +356,7 @@ export const updateSubTask = async (
     }
 
     const subtask = task.subTasks?.find((st) =>
-      st._id instanceof mongoose.Types.ObjectId
-        ? st._id.toString() === subTaskId
-        : st._id === subTaskId
+      st.id ? st.id.toString() === subTaskId : st.id === subTaskId
     );
     if (!subtask) {
       res.status(404).json({ message: "SubTask not found" });
