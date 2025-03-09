@@ -16,6 +16,7 @@ const allowedOrigins = [
   "https://plan-and-do-wojtelos-projects.vercel.app",
   "https://plan-and-do-kappa.vercel.app",
   "https://plan-and-do-git-main-wojtelos-projects.vercel.app",
+  "http://localhost:5173",
 ];
 app.use(
   cors({
